@@ -12,7 +12,7 @@ mongoose.connect("mongodb+srv://pradhan:pradhan123@lazy.0shcj.mongodb.net/lazymi
    useNewUrlParser : true,
 });
 
-app.post("/insert", async (req,res) =>{
+app.post("https://lazy-minting.herokuapp.com/insert", async (req,res) =>{
     const tokenId =req.body.voucher.tokenId;
     const uri = req.body.voucher.uri;
     const minPrice =req.body.voucher.minPrice;
@@ -45,7 +45,7 @@ app.post("/insert", async (req,res) =>{
     }
 });
 
-app.put("/update", async (req,res) =>{
+app.put("https://lazy-minting.herokuapp.com/update", async (req,res) =>{
     const id =req.body.id;
     const listed = req.body.listed;
     const account = req.body.account;
@@ -61,7 +61,7 @@ app.put("/update", async (req,res) =>{
     }
 });
 
-app.get("/read",async(req,res) => {
+app.get("https://lazy-minting.herokuapp.com/read",async(req,res) => {
     lazymint.find({ listed : true},(err,result)=>{
         if(err){
             res.send(err);  
@@ -77,7 +77,7 @@ app.get("/read",async(req,res) => {
 
 
 
-app.get("/data",async(req,res) => {
+app.get("https://lazy-minting.herokuapp.com/data",async(req,res) => {
      const data = await lazymint.findOne().sort({tokenId : -1 });
      if(data){
          res.send(data);
